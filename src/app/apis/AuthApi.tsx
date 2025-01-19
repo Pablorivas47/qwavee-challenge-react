@@ -12,7 +12,7 @@ export const loginUser = async (email: string, password: string) => {
   try {
     const response = await axios.post(endpoint, { email, password });
     return response;
-  } catch (error) {
+  } catch {
     throw new Error('Invalid email or password.');
   }
 };

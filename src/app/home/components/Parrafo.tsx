@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+
 
 interface TextWithCircleProps {
   title: string; // Título que se mostrará

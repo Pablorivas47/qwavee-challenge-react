@@ -9,6 +9,7 @@ import TextWithCircle from './components/Parrafo';
 import CardVariations from './components/CardComponent';
 import CardPricing from './components/CardPricing';
 import fetchNatureData from '../apis/NatureApi';
+import Image from 'next/image';
 // Corregir la ortografía de Footer
 
 // Definir los datos de las tarjetas (Ejemplo)
@@ -21,7 +22,14 @@ const cardsData = [
 
 const HomePage = () => {
 
-  const [natureData, setNatureData] = useState<any[]>([]);
+  interface NatureData {
+    id: number;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }
+
+  const [natureData, setNatureData] = useState<NatureData[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -45,11 +53,13 @@ const HomePage = () => {
           }}
         >
           <div className="ml-[91px] pt-12">
-            <img
-              src="/assets/images/ui-unicorn-logo.png"
-              alt="Logo"
-              className="h-12 object-contain"
-            />
+          <Image
+            src="/assets/images/ui-unicorn-logo.png"
+            alt="Logo"
+            width={100} // Cambia los valores según necesites
+            height={50}
+            priority // Esto optimiza el LCP al cargar imágenes críticas
+          />
           </div>
 
           {/* Welcome Section */}
@@ -64,10 +74,14 @@ const HomePage = () => {
               </p>
               <Button label="READABLE ENGLISH" onClick={() => console.log('READABLE ENGLISH clicked')} />
             </div>
-            <img
+            <Image
               src="/assets/images/the-island1.jpg"
               alt="Welcome"
-              className="w-[550px] h-[550px] rounded-full mr-[70px]"
+              width={550} // Ancho de la imagen
+              height={550} // Alto de la imagen
+              className="rounded-full mr-[70px]"
+              style={{ objectFit: 'cover' }} // Opcional, asegura que la imagen se ajuste correctamente
+              priority // Si es una imagen crítica para el LCP
             />
           </section>
         </div>

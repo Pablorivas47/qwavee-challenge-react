@@ -2,7 +2,7 @@ import ReactPlayer from 'react-player';
 import { useState } from 'react';
 
 export default function VideoPlayer() {
-  const [playing, setPlaying] = useState(true);
+  const [playing] = useState(true);
 
   return (
     <div className="relative w-[600px] h-[600px] bg-black overflow-hidden">

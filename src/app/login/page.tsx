@@ -6,6 +6,7 @@ import Switcher from '../components/Switcher';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importar íconos de FontAwesome
 import { loginUser } from '../apis/AuthApi'; // Asumimos que loginUser es una función de autenticación
 import { useRouter } from 'next/navigation'; // Importa el hook useRouter
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -44,7 +45,7 @@ export default function LoginPage() {
         // Si el login falla, muestra el mensaje de error
         setErrorMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch  {
       // Manejo de errores de la API
       setErrorMessage('Network error. Please try again later.');
     } finally {
@@ -57,11 +58,14 @@ export default function LoginPage() {
       <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden">
         {/* Imagen para pantallas grandes */}
         <div className="hidden lg:block h-full">
-          <img
-            src="/assets/images/imageLogin.jpg"
-            alt="Lighthouse"
-            className="h-full w-full object-cover"
-          />
+        <Image
+          src="/assets/images/imageLogin.jpg"
+          alt="Lighthouse"
+          fill
+          className="object-cover"
+          sizes="100vw" // Para pantallas responsivas, opcional
+          priority // Si esta imagen es clave para el LCP
+        />
         </div>
 
         {/* Formulario */}
@@ -69,11 +73,14 @@ export default function LoginPage() {
           <div className="w-full max-w-[360px] mx-auto">
             {/* Logo */}
             <div className="flex items-center gap-[10px] justify-left mb-12">
-              <img
-                src="/assets/images/ui-unicorn-logo.png"
-                alt="Logo"
-                className="h-12 object-contain"
-              />
+            <Image
+              src="/assets/images/imageLogin.jpg"
+              alt="Lighthouse"
+              fill
+              className="object-cover"
+              sizes="100vw" // Opcional: optimiza la carga para pantallas responsivas
+              priority // Si es importante para el LCP
+            />
             </div>
 
             {/* Título */}
@@ -152,7 +159,13 @@ export default function LoginPage() {
               {/* Google Sign In */}
               <div className="text-center mt-8">
                 <button className="w-full bg-[#333333] text-[#ffffff] rounded-lg py-2.5 hover:bg-black-200 flex items-center justify-center gap-2">
-                  <img src="/assets/icons/google.svg" alt="Google Icon" className="h-5 w-5" />
+                <Image
+                  src="/assets/icons/google.svg"
+                  alt="Google Icon"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
                   Or sign in with Google
                 </button>
                 <p className="font-sfprodisplay font-normal text-[12px] text-[#1a1a1a] mt-6">

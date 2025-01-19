@@ -1,15 +1,18 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <footer className="bg-white text-center py-8">
       {/* Imagen al inicio */}
       <div className="mb-20">
-        <img
+      <Image
           src="/assets/images/ui-unicorn-logo.png" // Reemplaza con la ruta de tu imagen
           alt="Footer Logo"
-          className="mx-auto h-[89px] w-auto"
+          width={150} // Ajusta el ancho
+          height={89} // Ajusta la altura
+          className="mx-auto"
         />
       </div>
 
