@@ -14,10 +14,10 @@ import Image from 'next/image';
 
 // Definir los datos de las tarjetas (Ejemplo)
 const cardsData = [
-  { image: '/assets/images/Variations.png', title: 'Essentially Unchange' },
-  { image: '/assets/images/Variations.png', title: 'Essentially Unchange' },
-  { image: '/assets/images/Variations.png', title: 'Essentially Unchange' },
-  { image: '/assets/images/Variations.png', title: 'Essentially Unchange' }
+  { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
+  { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
+  { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
+  { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' }
 ];
 
 const HomePage = () => {
