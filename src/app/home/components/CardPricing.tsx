@@ -21,13 +21,14 @@ export default function CardPricing({
   return (
     <div className="max-w-sm mx-auto border rounded-lg shadow-lg overflow-hidden bg-white ">
       {/* Image Section */}
-      <div className="relative w-full h-48">
+      <div className="relative w-[271px] h-[412px]">
         <Image
           src={imageUrl} // Ruta de la imagen desde props
           alt={imageAlt} // Texto alternativo
-          fill // O usa 'intrinsic', 'responsive', o 'fixed'
-          sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: 'cover' }} 
+          fill // La imagen ocupará todo el contenedor
+          style={{ objectFit: 'cover' }} // Ajuste de la imagen para que cubra el área sin distorsión
+          sizes="(max-width: 768px) 100vw, 50vw" // Ajusta el tamaño en pantallas pequeñas
+          priority // Opcional: activa la carga prioritaria si es una imagen clave
         />
       </div>
       {/* Content Section */}
