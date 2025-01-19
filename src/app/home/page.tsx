@@ -6,7 +6,7 @@ import VideoPlayer from './components/Video';
 import Section from './components/Section';
 import Footer from './components/Footer';
 import TextWithCircle from './components/Parrafo';
-import CardVariations from './components/CardComponent';
+import CardVariations from './components/CardVariations';
 import CardPricing from './components/CardPricing';
 import fetchNatureData from '../apis/NatureApi';
 import Image from 'next/image';

@@ -14,14 +14,16 @@ export default function CardVariations({
   return (
     <div className=" shadow-md overflow-hidden w-[271px] h-[412px]">
       <div className="relative w-full h-full">
-        {/* Imagen de la tarjeta */}
-        <Image 
-          src={image} 
-          alt={title} 
-          layout="fill" // Hace que la imagen ocupe todo el contenedor
-          objectFit="cover" // Mantiene la proporción y llena el contenedor
-          priority // Carga prioritaria para imágenes visibles inicialmente
-        />
+        <div className="relative w-[271px] h-[412px]">
+          {/* Imagen de la tarjeta */}
+          <Image 
+            src={image} 
+            alt={title} 
+            layout="fill" // Hace que la imagen ocupe todo el contenedor
+            objectFit="cover" // Mantiene la proporción y llena el contenedor
+            priority // Carga prioritaria para imágenes visibles inicialmente
+          />
+        </div>
         
         {/* Título y flecha */}
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-white flex items-center justify-between">
