@@ -9,26 +9,18 @@ interface NatureCardProps {
 
 const NatureCard: React.FC<NatureCardProps> = ({ title, description, imageUrl }) => {
   return (
-    <div style={{ textAlign: 'left', width: '308px' }}>
-      <div style={{ width: '308px', height: '263px', overflow: 'hidden' }}>
-      <Image
-          src={imageUrl} // Ruta de la imagen
-          alt={title} // Texto alternativo
-          layout="fill" // Ocupa todo el contenedor
-          objectFit="cover" // Se asegura de que la imagen cubra el área sin distorsión
-          priority // Carga prioritaria si es una imagen clave
+    <div className="text-left w-[308px]">
+      <div className="relative w-[308px] h-[263px] overflow-hidden">
+        <Image
+          src={imageUrl}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          priority
         />
       </div>
-      <h3 style={{ fontSize: '35px', fontWeight: 'bold', marginTop: '15px' }}>{title}</h3>
-      <p
-        style={{
-          fontSize: '23px',
-          fontWeight: 'bold',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        }}
-      >
+      <h3 className="text-[35px] font-bold mt-4">{title}</h3>
+      <p className="text-[23px] font-bold overflow-hidden text-ellipsis whitespace-nowrap">
         {description}
       </p>
     </div>
@@ -36,5 +28,3 @@ const NatureCard: React.FC<NatureCardProps> = ({ title, description, imageUrl })
 };
 
 export default NatureCard;
-
-

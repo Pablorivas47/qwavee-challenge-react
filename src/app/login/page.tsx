@@ -57,15 +57,14 @@ export default function LoginPage() {
     <main className="flex items-center justify-center bg-gray-100 h-full">
       <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden">
         {/* Imagen para pantallas grandes */}
-        <div className="hidden lg:block h-full">
-        <Image
-          src="/assets/images/imageLogin.jpg"
-          alt="Lighthouse"
-          fill
-          className="object-cover"
-          sizes="100vw" // Para pantallas responsivas, opcional
-          priority // Si esta imagen es clave para el LCP
-        />
+        <div className="hidden lg:block w-[910px] h-[901px]">
+          <Image
+            src="/assets/images/imageLogin.jpg"
+            alt="Lighthouse"
+            width={910}  // El componente Image requiere esto, no afecta la visualización
+            height={901} // El componente Image requiere esto también
+            //className="object-cover"
+          />
         </div>
 
         {/* Formulario */}
@@ -73,15 +72,14 @@ export default function LoginPage() {
           <div className="w-full max-w-[360px] mx-auto">
             {/* Logo */}
             <div className="flex items-center gap-[10px] justify-left mb-12">
-            <Image
-              src="/assets/images/imageLogin.jpg"
-              alt="Lighthouse"
-              fill
-              className="object-cover"
-              sizes="100vw" // Opcional: optimiza la carga para pantallas responsivas
-              priority // Si es importante para el LCP
-            />
+              <Image
+                src="/assets/images/ui-unicorn-logo.png"
+                alt="Logo"
+                width={148}
+                height={148}
+              />
             </div>
+
 
             {/* Título */}
             <h2 className="text-[20px] font-SfProDisplay font-regular text-[#1a1a1a] mb-6 text-center lg:text-left">
