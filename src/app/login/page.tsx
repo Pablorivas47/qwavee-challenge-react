@@ -35,8 +35,8 @@ export default function LoginPage() {
   
   return (
     <main className="flex items-center justify-center bg-gray-100 h-full">
-      <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden">
-        <div className="relative w-[910px] h-[901px] overflow-hidden">
+      <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden ">
+        <div className="relative w-[910px] h-[901px] overflow-hidden hidden xl:block ">
           {images.map((src, index) => (
             <div
               key={index}
