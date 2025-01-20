@@ -1,6 +1,7 @@
 import ReactPlayer from 'react-player';
 import { useState } from 'react';
 
+
 export default function VideoPlayer() {
   const [playing] = useState(true);
 

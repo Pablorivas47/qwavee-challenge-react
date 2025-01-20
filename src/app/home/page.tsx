@@ -20,10 +20,16 @@ const cardsData = [
 
 const HomePage = () => {
 
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1340);
+  // Estado para manejar el tamaño de la pantalla en el cliente
+  const [isWideScreen, setIsWideScreen] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsWideScreen(window.innerWidth >= 1340);
+    // Este código solo se ejecutará en el cliente
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth >= 1340);
+    };
+
+    handleResize(); // Llama a la función de inmediato para configurar el valor inicial
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -132,8 +138,6 @@ const HomePage = () => {
           </div>
       </section>
 
-
-
         {/* Seccion nature */}
       <section className="relative bg-[#002F5F] text-white p-[76px]">
         <h2 className="text-[50px] font-bold text-center">The Nature</h2>
@@ -195,7 +199,7 @@ const HomePage = () => {
             paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since."
           /><TextWithCircle
           title="Contrary"
-          paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy."
+          paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text."
         />
         <div className="text-center sm:text-left">
             <Button label="PRAESENTIUM VOL" backgroundColor='white' color='#072a52' onClick={() => console.log('Button clicked')} />
