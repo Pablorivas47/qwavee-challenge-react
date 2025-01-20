@@ -5,10 +5,9 @@ interface ButtonProps {
   onClick: () => void;
   backgroundColor?: string;
   color?: string;
-  fontsize?: number;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002F5F', color = '#ffffff', fontsize = '14px' }) => {
+const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002F5F', color = '#ffffff'}) => {
   return (
     <button
       style={{

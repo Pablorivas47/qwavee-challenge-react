@@ -166,11 +166,13 @@ export default function LoginPage() {
               </div>
               <div className="flex items-center justify-between mt-[220px]">
                 <div className="flex items-center gap-[5px]">
-                  <img
-                    src="/assets/images/logo-unicorn2.png" 
-                    alt="Logo Part 1"
-                    className="h-6 object-contain"
-                  />
+                <Image
+                  src="/assets/images/logo-unicorn2.png"
+                  alt="Logo Part 1"
+                  width={24}
+                  height={24} 
+                  className="object-contain"
+                />
                   <span className="font-regular text-[12px] text-[#007aff]">@unicorn</span>
                 </div>
                 <div className="flex-grow"></div>
