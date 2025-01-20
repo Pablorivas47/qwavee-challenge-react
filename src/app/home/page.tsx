@@ -10,6 +10,10 @@ import CardVariations from './components/CardVariations';
 import CardPricing from './components/CardPricing';
 import fetchNatureData from '../apis/NatureApi';
 import Image from 'next/image';
+import { useModal } from './hooks/UseModal';
+import { useScreenSize } from './hooks/UseScreenSize';
+import { useNatureData } from './hooks/UseNatureData';
+import { scrollToSection } from './hooks/ScrollTol';
 
 const cardsData = [
   { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
@@ -20,38 +24,9 @@ const cardsData = [
 
 const HomePage = () => {
 
-
-  const [isWideScreen, setIsWideScreen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsWideScreen(window.innerWidth >= 1340);
-    };
-
-    handleResize(); 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  interface NatureData {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-  }
-
-  const [natureData, setNatureData] = useState<NatureData[]>([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchNatureData();
-      setNatureData(data);
-    };
-    loadData();
-  }, []);
+  const { isModalOpen, toggleModal } = useModal();
+  const isWideScreen = useScreenSize(1340);
+  const natureData = useNatureData();
   
   return (
     <div className="w-full max-w-screen-pc h-full mx-auto bg-white">
@@ -106,7 +81,7 @@ const HomePage = () => {
         </div>
 
         {/*Seccion the island  */}
-        <section
+        <section id="the-island-section"
           className="flex flex-wrap items-center gap-10 px-4 xlmax:px-16"
           style={{
             background: isWideScreen
@@ -138,7 +113,7 @@ const HomePage = () => {
       </section>
 
         {/* Seccion nature */}
-      <section className="relative bg-[#002F5F] text-white p-[76px]">
+      <section id="nature-section"  className="relative bg-[#002F5F] text-white p-[76px]">
         <h2 className="text-[50px] font-bold text-center">The Nature</h2>
         <div className="w-[100px] h-[2px] bg-[#FFFFFF] mx-auto mt-[21px] mb-[64px]"></div>
         <div className="flex flex-wrap justify-center gap-[64px]">
@@ -175,8 +150,22 @@ const HomePage = () => {
         {/* Seccion info */}
         <Section title="It has survived thru time and also the onslaught of nature" className="text-center max-w-[756] mx-auto">
           <div className="text-center">
-            <Button label="PRAESENTIUM VOL" onClick={() => console.log('Button clicked')} />
+            <Button label="PRAESENTIUM VOL" onClick={toggleModal} />
           </div>
+
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center ">
+              <div className="bg-[#072a52] text-white p-6 rounded-md shadow-lg sm:max-w-[600px] s:max-w-[300px] text-center ">
+                <p>Fury There are creations, both natural and man-made, that stand as silent witnesses to the relentless march of time. These enduring structures and formations bear the scars of the ages, testifying to their ability to withstand not only the passage of centuries but also the onslaught of nature’s untamed fury. Be it ancient ruins standing defiantly against erosion, weathering storms and earthquakes, or towering trees rooted firmly in the earth for millennia, their resilience is nothing short of extraordinary. They’ve endured blazing heat, relentless rains, howling winds, and even the cataclysmic forces of floods and fires. Each crack and scar tells a story, each bend and twist whispers a tale of survival and adaptation.</p>
+                <button
+                  className="mt-4 bg-white text-blue-800 px-4 py-2 rounded hover:bg-gray-200"
+                  onClick={toggleModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
         </Section>
 
         {/* Seccion nature, animals */}
@@ -201,7 +190,7 @@ const HomePage = () => {
           paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text."
         />
         <div className="text-center sm:text-left">
-            <Button label="PRAESENTIUM VOL" backgroundColor='white' color='#072a52' onClick={() => console.log('Button clicked')} />
+            <Button label="PRAESENTIUM VOL" backgroundColor='white' color='#072a52' onClick={() => scrollToSection('the-island-section')} />
         </div> 
         </Section>
 
@@ -236,7 +225,7 @@ const HomePage = () => {
           </div>
         </Section>
         <div className="text-center mb-[180px]">
-            <Button label="FIND MORE" onClick={() => console.log('Button clicked')} />
+            <Button label="FIND MORE" onClick={() => scrollToSection('nature-section')}  />
         </div> 
 
         {/*Seccion footer */}
@@ -245,5 +234,6 @@ const HomePage = () => {
     </div>
   );
 };
+
 
 export default HomePage;

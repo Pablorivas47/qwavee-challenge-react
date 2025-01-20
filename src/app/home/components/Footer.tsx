@@ -17,28 +17,28 @@ export default function Footer() {
 
       <div className="flex justify-center space-x-6 mb-4">
         <a
-          href="#"
+          href="https://qwavee.com/"
           className="text-[#072a52] hover:text-blue-800 text-2xl"
           aria-label="Facebook"
         >
           <FaFacebook />
         </a>
         <a
-          href="#"
+          href="https://qwavee.com/"
           className="text-[#072a52] hover:text-blue-800 text-2xl"
           aria-label="Twitter"
         >
           <FaTwitter />
         </a>
         <a
-          href="#"
+          href="https://www.instagram.com/qwavee/"
           className="text-[#072a52] hover:text-blue-800 text-2xl"
           aria-label="Instagram"
         >
           <FaInstagram />
         </a>
         <a
-          href="#"
+          href="https://www.linkedin.com/company/qwavee/posts/?feedView=all"
           className="text-[#072a52] hover:text-blue-800 text-2xl"
           aria-label="LinkedIn"
         >

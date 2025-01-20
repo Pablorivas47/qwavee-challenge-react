@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 interface ButtonProps {
   label: string;
   onClick: () => void;
@@ -8,19 +7,14 @@ interface ButtonProps {
   color?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002F5F', color = '#ffffff'}) => {
+const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002F5F', color = '#ffffff' }) => {
   return (
     <button
-      style={{
-        padding: '10px 20px',
-        backgroundColor,
-        color,
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '14px',
-        fontWeight: 'normal',
-      }}
+      className={`
+        px-5 py-2 rounded-md border-none cursor-pointer text-[14px] font-normal transition-all duration-300
+        bg-[${backgroundColor}] text-[${color}]
+        hover:bg-[#00529B] hover:scale-110 active:scale-95
+      `}
       onClick={onClick}
     >
       {label}
@@ -29,3 +23,4 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002
 };
 
 export default Button;
+

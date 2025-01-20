@@ -4,59 +4,55 @@ import React, { useState, useEffect } from 'react';
 import 'react-toggle-switch/dist/css/switch.min.css';
 import Switcher from '../components/Switcher';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
-import { loginUser } from '../apis/AuthApi'; 
-import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
+import { usePasswordToggle } from './hooks/UsePasswordToggle';
+import { useAuth } from './hooks/UseAuth';
+import { useCarousel } from './hooks/UseCarousel';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [showPassword, setShowPassword] = useState<boolean | null>(null);
-  const router = useRouter(); 
+  const { showPassword, togglePasswordVisibility } = usePasswordToggle();
+  const { handleLogin, loading, errorMessage } = useAuth();
 
-  useEffect(() => {
-    setShowPassword(false);
-  }, []);
-
-  const handleToggle = () => setRememberMe(!rememberMe);
-
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setErrorMessage('');
-    setSuccessMessage('');
+  const images = [
+    '/assets/images/carrusel/carrusel1.jpg',
+    '/assets/images/carrusel/carrusel2.jpg',
+    '/assets/images/carrusel/carrusel3.jpg',
+    '/assets/images/carrusel/carrusel4.jpg',
+    '/assets/images/carrusel/carrusel5.jpg',
+  ];
   
-    try {
-      const response = await loginUser(email, password);
-      
-      if (response.status === 200 && response.data.éxito) {
-        router.push('/home');
-      } else {
-        setErrorMessage('Something went wrong. Please try again.');
-      }
-    } catch  {
-      setErrorMessage('Invalid email or password.');
-    } finally {
-      setLoading(false);
-    }
+  const currentIndex = useCarousel(images);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleLogin(email, password);
   };
 
+  const handleToggle = () => setRememberMe(!rememberMe);
+  
   return (
     <main className="flex items-center justify-center bg-gray-100 h-full">
       <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden">
-        <div className="hidden xl:block w-[910px] h-[901px]">
-          <Image
-            src="/assets/images/imageLogin.jpg"
-            alt="Lighthouse"
-            width={910}  
-            height={901} 
-          />
+        <div className="relative w-[910px] h-[901px] overflow-hidden">
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className={`absolute top-0 left-0 transition-opacity duration-1000 ${
+                currentIndex === index ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={src}
+                alt={`Carrusel image ${index + 1}`}
+                width={910}
+                height={901}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
         </div>
 
         {/* Formulario  */}
@@ -133,21 +129,24 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full font-bold rounded-lg px-4 py-2 ${loading ? 'bg-gray-400' : 'bg-[#007aff] text-white hover:bg-blue-600'} focus:ring-2 focus:ring-blue-500`}
+                className={`w-full font-bold rounded-lg px-4 py-2 transition-all duration-300 ${
+                  loading
+                    ? 'bg-gray-400'
+                    : 'bg-[#007aff] text-white hover:bg-blue-600 hover:scale-105 hover:shadow-lg'
+                } focus:ring-2 focus:ring-blue-500`}
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
 
               {/* Mensajes de error o éxito */}
               {errorMessage && <p className="mt-4 text-red-500 text-center">{errorMessage}</p>}
-              {successMessage && <p className="mt-4 text-green-500 text-center">{successMessage}</p>}
 
               {/* Divider */}
               <div className="w-full border-t border-[#e5e5e5] mt-8"></div>
 
               {/* Google Sign In */}
               <div className="text-center mt-8">
-                <button className="w-full bg-[#333333] text-[#ffffff] rounded-lg py-2.5 hover:bg-black-200 flex items-center justify-center gap-2">
+                <button className="w-full bg-[#333333] text-[#ffffff] rounded-lg py-2.5 hover:bg-[#1a1a1a] hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
                 <Image
                   src="/assets/icons/google.svg"
                   alt="Google Icon"
