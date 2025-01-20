@@ -188,7 +188,7 @@ const HomePage = () => {
           paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text."
         />
         <div className="text-center sm:text-left">
-            <Button label="PRAESENTIUM VOL" backgroundColor='white' color='#072a52' onClick={() => scrollToSection('the-island-section')} />
+            <Button label="PRAESENTIUM VOL" backgroundColor='#002F5F' onClick={() => scrollToSection('the-island-section')} />
         </div> 
         </Section>
 
