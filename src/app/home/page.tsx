@@ -20,16 +20,15 @@ const cardsData = [
 
 const HomePage = () => {
 
-  // Estado para manejar el tamaño de la pantalla en el cliente
+
   const [isWideScreen, setIsWideScreen] = useState(false);
 
   useEffect(() => {
-    // Este código solo se ejecutará en el cliente
     const handleResize = () => {
       setIsWideScreen(window.innerWidth >= 1340);
     };
 
-    handleResize(); // Llama a la función de inmediato para configurar el valor inicial
+    handleResize(); 
     window.addEventListener('resize', handleResize);
 
     return () => {
