@@ -1,5 +1,4 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import Button from './components/Button';
 import NatureCard from './components/NatureCard';
 import VideoPlayer from './components/ReactPlayer';
@@ -8,7 +7,6 @@ import Footer from './components/Footer';
 import TextWithCircle from './components/TextWithCircle';
 import CardVariations from './components/CardVariations';
 import CardPricing from './components/CardPricing';
-import fetchNatureData from '../apis/NatureApi';
 import Image from 'next/image';
 import { useModal } from './hooks/UseModal';
 import { useScreenSize } from './hooks/UseScreenSize';

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'react-toggle-switch/dist/css/switch.min.css';
 import Switcher from '../components/Switcher';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
