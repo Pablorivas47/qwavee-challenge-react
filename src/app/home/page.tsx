@@ -27,8 +27,7 @@ const HomePage = () => {
   const natureData = useNatureData();
   
   return (
-    <div className="w-full max-w-screen-pc h-full mx-auto bg-white">
-      <main>
+      <main className="w-full max-w-screen-pc h-full mx-auto bg-white ">
         <div
           className=""
           style={{
@@ -112,7 +111,7 @@ const HomePage = () => {
 
         {/* Seccion nature */}
       <section id="nature-section"  className="relative bg-[#002F5F] text-white p-[76px]">
-        <h2 className="text-[50px] font-bold text-center">The Nature</h2>
+        <h2 className="lg:text-[50px] md:text-[40px] text-[30px]  font-bold text-center">The Nature</h2>
         <div className="w-[100px] h-[2px] bg-[#FFFFFF] mx-auto mt-[21px] mb-[64px]"></div>
         <div className="flex flex-wrap justify-center gap-[64px]">
           {natureData.map((item) => (
@@ -229,7 +228,6 @@ const HomePage = () => {
         {/*Seccion footer */}
         <Footer />
       </main>
-    </div>
   );
 };
 

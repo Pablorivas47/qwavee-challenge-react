@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, backgroundColor = '#002
   return (
     <button
       className={`
-        px-5 py-2 rounded-md border-none cursor-pointer text-[14px] font-normal transition-all duration-300
+        px-5 py-2 rounded-md border-none cursor-pointer text-[10px]  phone:text-[14px] font-normal transition-all duration-300
         bg-[${backgroundColor}] text-[${color}]
         hover:bg-[#00529B] hover:scale-110 active:scale-95
       `}

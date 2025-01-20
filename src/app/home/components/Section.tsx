@@ -20,7 +20,7 @@ export default function Section({
           {title}
         </h2>
       )}
-      <div className=" container px-10 mx-auto ">{children}</div>
+      <div className=" container mx-auto ">{children}</div>
     </section>
   );
 }

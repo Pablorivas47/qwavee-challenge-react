@@ -18,7 +18,7 @@ const TextWithCircle = ({
         <div className="w-[6px] h-[6px] rounded-full bg-white mr-3"></div> 
         <h3 className={`font-bold ${titleSize} text-white`}>{title}</h3>
       </div>
-      <p className={`text-white max-w-[580px] mb-7 ${paragraphSize}`}>{paragraph}</p>
+      <p className={` text-xs phone:text-lg text-white max-w-[580px] mb-7 ${paragraphSize}`}>{paragraph}</p>
     </div>
   );
 };
