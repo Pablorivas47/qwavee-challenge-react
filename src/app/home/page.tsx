@@ -2,17 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import Button from './components/Button';
 import NatureCard from './components/NatureCard';
-import VideoPlayer from './components/Video';
+import VideoPlayer from './components/ReactPlayer';
 import Section from './components/Section';
 import Footer from './components/Footer';
-import TextWithCircle from './components/Parrafo';
+import TextWithCircle from './components/TextWithCircle';
 import CardVariations from './components/CardVariations';
 import CardPricing from './components/CardPricing';
 import fetchNatureData from '../apis/NatureApi';
 import Image from 'next/image';
-// Corregir la ortografía de Footer
 
-// Definir los datos de las tarjetas (Ejemplo)
 const cardsData = [
   { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
   { image: '/assets/images/variations.jpg', title: 'Essentially Unchange' },
@@ -21,6 +19,17 @@ const cardsData = [
 ];
 
 const HomePage = () => {
+
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1340);
+
+  useEffect(() => {
+    const handleResize = () => setIsWideScreen(window.innerWidth >= 1340);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   interface NatureData {
     id: number;
@@ -41,79 +50,91 @@ const HomePage = () => {
   
   return (
     <div className="w-full max-w-screen-pc h-full mx-auto bg-white">
-      {/* Main Content */}
       <main>
         <div
           className=""
           style={{
-            backgroundImage: "url('/assets/images/Background-Pattern.png')",
+            backgroundImage: "url('/assets/images/background-pattern.png')",
             backgroundSize: '1366px 900px',
             backgroundPosition: 'right',
             backgroundRepeat: 'no-repeat',
           }}
         >
-          <div className="ml-[91px] pt-12">
+          <div className="ml-[91px] pt-12 hidden sm:block">
           <Image
             src="/assets/images/ui-unicorn-logo.png"
             alt="Logo"
-            width={100} // Cambia los valores según necesites
+            width={100} 
             height={50}
-            priority // Esto optimiza el LCP al cargar imágenes críticas
+            priority 
           />
           </div>
 
-          {/* Welcome Section */}
+          {/* Seccion welcome */}
           <section className="flex flex-wrap items-center justify-between mb-[180px]">
-            <div className="ml-[73px]">
-              <h2 className="text-[58px] font-bold text-[#072a52]">Welcome Alex</h2>
-              <div className="w-[100px] h-[2px] bg-[#072a52] mt-[103px]"></div>
-              <p className="max-w-[597px] text-[17px] font-normal text-[#4e4e4e] leading-relaxed mt-10 mb-12">
+            <div className=" mx-auto text-center xl:text-left">
+              <h2 className="s:text-[50px] s:mt-[120px] sm:text-[58px] xl:text-[58px] lg:text-[48px] text-[#072a52] font-bold">
+                Welcome Alex
+              </h2>
+              <div className="w-[100px] h-[2px] bg-[#072a52] mt-[103px] mx-auto xl:mx-0"></div>
+              <p className=" max-w-[597px] text-[17px] xl:text-[17px] lg:text-[15px] text-[#4e4e4e] font-normal leading-relaxed mt-10 mb-12 mx-8 xl:mx-0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
                 make a type specimen book. It has survived not only five centuries.
               </p>
-              <Button label="READABLE ENGLISH" onClick={() => console.log('READABLE ENGLISH clicked')} />
+              <Button
+                label="READABLE ENGLISH"
+                onClick={() => console.log('READABLE ENGLISH clicked')}
+              />
             </div>
+
             <Image
               src="/assets/images/the-island1.jpg"
               alt="Welcome"
-              width={550} // Ancho de la imagen
-              height={550} // Alto de la imagen
-              className="rounded-full mr-[70px]"
-              style={{ objectFit: 'cover' }} // Opcional, asegura que la imagen se ajuste correctamente
-              priority // Si es una imagen crítica para el LCP
+              width={500}
+              height={500}
+              className="rounded-full mr-[70px] hidden xl:block"
+              style={{ objectFit: 'cover' }}
             />
           </section>
+
         </div>
 
-        {/* The Island Section */}
+        {/*Seccion the island  */}
         <section
-          className="flex flex-wrap items-center gap-10"
+          className="flex flex-wrap items-center gap-10 px-4 xlmax:px-16"
           style={{
-            background: `linear-gradient(to bottom, white 50%, #002F5F 50%), linear-gradient(to right, transparent 20%, white 20%)`,
-            backgroundSize: '100% 100%',
-            backgroundBlendMode: 'overlay',
+            background: isWideScreen
+              ? `linear-gradient(to bottom, white 50%, #002F5F 50%), linear-gradient(to right, transparent 20%, white 20%)`
+              : 'none',
+            backgroundSize: isWideScreen ? '100% 100%' : undefined,
+            backgroundBlendMode: isWideScreen ? 'overlay' : undefined,
           }}
+          
         >
-          <div className="ml-[103px]">
-            {/* VideoPlayer reemplaza la imagen */}
+          {/* Contenido de texto */}
+          <div className="max-w-[600px] mx-auto text-center xlmax:text-left">
+            <h2 className="text-[50px] font-bold text-[#072a52]">The Island</h2>
+            <div className="w-[100px] h-[2px] bg-[#072a52] mt-[21px] mx-auto xlmax:mx-0"></div>
+            <p className="text-[17px] font-normal text-[#4e4e4e] leading-relaxed mt-[30px] mb-[60px]">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy
+              text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </p>
+            <div className="flex justify-center xlmax:justify-start">
+              <Button label="LEARN MORE" onClick={() => console.log('Learn More clicked')} />
+            </div>
+          </div>
+
+          {/* Video */}
+          <div className="w-full flex justify-center xlmax:w-auto order-last xlmax:order-first">
             <VideoPlayer />
           </div>
-          <div className="max-w-[600px]">
-            <h2 className="text-[50px] font-bold text-[#072a52]">The Island</h2>
-            <div className="w-[100px] h-[2px] bg-[#072a52] mt-[21px]"></div>
-            <p className="max-w-[597px] text-[17px] font-normal text-[#4e4e4e] leading-relaxed mt-[30px] mb-[60px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-              make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-              remaining essentially unchanged.
-            </p>
-            <Button label="LEARN MORE" onClick={() => console.log('Learn More clicked')} />
-          </div>
-        </section>
+      </section>
 
-        {/* The Nature Section */}
-        {/* Sección Nature */}
+
+
+        {/* Seccion nature */}
       <section className="relative bg-[#002F5F] text-white p-[76px]">
         <h2 className="text-[50px] font-bold text-center">The Nature</h2>
         <div className="w-[100px] h-[2px] bg-[#FFFFFF] mx-auto mt-[21px] mb-[64px]"></div>
@@ -129,7 +150,7 @@ const HomePage = () => {
         </div>
       </section>
 
-        {/* Sección: There Are Many Variations */}
+        {/* Seccion variations */}
         <Section title="There Are Many Variations" className='gap-8 text-center'>
           <div className="w-[100px] h-[2px] bg-[#072a52] mx-auto "></div>
           <div className="flex flex-wrap  justify-center gap-8 mt-[66px] mx-auto">
@@ -148,43 +169,43 @@ const HomePage = () => {
           </div>
         </Section>
 
-        {/* Sección: Texto con botón */}
+        {/* Seccion info */}
         <Section title="It has survived thru time and also the onslaught of nature" className="text-center max-w-[756] mx-auto">
           <div className="text-center">
             <Button label="PRAESENTIUM VOL" onClick={() => console.log('Button clicked')} />
           </div>
         </Section>
 
-        {/* Sección: Nature, animals */}
+        {/* Seccion nature, animals */}
         <Section title="Nature, animals" titleColor='white' className="text-left  phone:px-[90px] bg-[#072a52] lg:bg-gradient-to-r from-[#072a52] via-[#365e8d] to-gray-200 ">
           <TextWithCircle
             title="Lorem Is"
-            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
+            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
           />
           <TextWithCircle
             title="Lorem Ipsum Orem"
-            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
+            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
           />
           <TextWithCircle
             title="Randomised"
-            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
+            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since the ."
           />
           <TextWithCircle
             title="Not Simply"
-            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since."
+            paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy text  ever since."
           /><TextWithCircle
           title="Contrary"
-          paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy."
+          paragraph="Lorem Ipsum is simply dummy text of the printing  and typesetting industry. Lorem Ipsum has been the industry  standard dummy."
         />
         <div className="text-center sm:text-left">
             <Button label="PRAESENTIUM VOL" backgroundColor='white' color='#072a52' onClick={() => console.log('Button clicked')} />
         </div> 
         </Section>
 
-        {/* Sección: Pricing */}
-        <Section title="Pricing" className='text-center'>
+        {/* Seccion pricing */}
+        <Section title="Pricing" className='text-center mx-auto'>
           <div className="w-[100px] h-[2px] bg-[#072a52] mt-[35px] mb-[100px] mx-auto"></div>
-          <div className="flex flex-wrap shrink-0 md:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8 md:grid-cols-2 xl:grid-cols-3">
               <CardPricing
                 imageUrl="/assets/images/pricing.jpg"
                 imageAlt="Colorful lighthouse"
@@ -215,7 +236,7 @@ const HomePage = () => {
             <Button label="FIND MORE" onClick={() => console.log('Button clicked')} />
         </div> 
 
-        {/* Footer */}
+        {/*Seccion footer */}
         <Footer />
       </main>
     </div>

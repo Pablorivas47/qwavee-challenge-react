@@ -4,14 +4,14 @@ interface SectionProps {
   children: ReactNode;
   title?: string;
   className?: string;
-  titleColor?: string; // Propiedad opcional para color del título
+  titleColor?: string;
 }
 
 export default function Section({
   children,
   title,
   className,
-  titleColor = '#072a52', // Color por defecto
+  titleColor = '#072a52',
 }: SectionProps) {
   return (
     <section className={`py-12 ${className}`}>
@@ -20,7 +20,7 @@ export default function Section({
           {title}
         </h2>
       )}
-      <div className="container px-10">{children}</div>
+      <div className=" container px-10 mx-auto ">{children}</div>
     </section>
   );
 }

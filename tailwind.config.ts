@@ -11,6 +11,8 @@ export default {
       screens:{
         'phone' : '375px',
         'pc' : '1366px',
+        'xlmax' : '1340px',
+        's' : '100px',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif',],

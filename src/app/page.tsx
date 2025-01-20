@@ -1,12 +1,12 @@
 
 
-import LoginPage from "./login/page";  // Importa el componente Login
+import LoginPage from "./login/page";
 
 
  export default function Home() {
   return (
     <div>
-      <LoginPage />  {/* Aquí renderizas el componente Login */}
+      <LoginPage /> 
     </div>
   );
 }

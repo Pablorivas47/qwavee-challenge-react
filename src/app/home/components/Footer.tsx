@@ -5,18 +5,16 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="bg-white text-center py-8">
-      {/* Imagen al inicio */}
       <div className="mb-20">
       <Image
-          src="/assets/images/ui-unicorn-logo.png" // Reemplaza con la ruta de tu imagen
+          src="/assets/images/ui-unicorn-logo.png" 
           alt="Footer Logo"
-          width={150} // Ajusta el ancho
-          height={89} // Ajusta la altura
+          width={150} 
+          height={89} 
           className="mx-auto"
         />
       </div>
 
-      {/* Iconos de redes sociales */}
       <div className="flex justify-center space-x-6 mb-4">
         <a
           href="#"
@@ -48,8 +46,7 @@ export default function Footer() {
         </a>
       </div>
 
-      {/* Párrafo en color azul */}
-      <p className="text-[#072a52] text-sm mb-8">
+      <p className="text-[#072a52] text-sm mx-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       </p>
     </footer>

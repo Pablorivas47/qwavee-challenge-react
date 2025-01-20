@@ -5,17 +5,17 @@ export default function VideoPlayer() {
   const [playing] = useState(true);
 
   return (
-    <div className="relative w-[600px] h-[600px] bg-black overflow-hidden">
+    <div className="relative bg-black overflow-hidden md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] s:w-[300px] s:h-[300px]">
       <ReactPlayer
         url="/assets/videos/video.mp4"
         playing={playing}
-        controls // Muestra los controles del video
+        controls 
         onPause={() => console.log('El video está en pausa')}
         onEnded={() => console.log('El video terminó')}
         loop
         muted
-        width="100%" // Asegura que ocupe todo el ancho del contenedor
-        height="100%" // Asegura que ocupe toda la altura del contenedor
+        width="100%"
+        height="100%"
         className="absolute top-0 left-0"
       />
     </div>

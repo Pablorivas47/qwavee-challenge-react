@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import 'react-toggle-switch/dist/css/switch.min.css';
 import Switcher from '../components/Switcher';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importar íconos de FontAwesome
-import { loginUser } from '../apis/AuthApi'; // Asumimos que loginUser es una función de autenticación
-import { useRouter } from 'next/navigation'; // Importa el hook useRouter
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import { loginUser } from '../apis/AuthApi'; 
+import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 
 export default function LoginPage() {
@@ -15,8 +15,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [showPassword, setShowPassword] = useState<boolean | null>(null); // Inicializa con null para evitar diferencias durante la hidratación
-  const router = useRouter(); // Inicializa el hook useRouter
+  const [showPassword, setShowPassword] = useState<boolean | null>(null);
+  const router = useRouter(); 
 
   useEffect(() => {
     setShowPassword(false);
@@ -35,19 +35,13 @@ export default function LoginPage() {
     try {
       const response = await loginUser(email, password);
       
-      // Si la API devuelve éxito
       if (response.status === 200 && response.data.éxito) {
-        setSuccessMessage('Login successful!');
-        
-        // Redirige a la página Home en caso de login exitoso
         router.push('/home');
       } else {
-        // Si el login falla, muestra el mensaje de error
         setErrorMessage('Something went wrong. Please try again.');
       }
     } catch  {
-      // Manejo de errores de la API
-      setErrorMessage('Network error. Please try again later.');
+      setErrorMessage('Invalid email or password.');
     } finally {
       setLoading(false);
     }
@@ -56,22 +50,20 @@ export default function LoginPage() {
   return (
     <main className="flex items-center justify-center bg-gray-100 h-full">
       <div className="flex flex-col lg:flex-row w-full h-full  shadow-lg rounded-lg overflow-hidden">
-        {/* Imagen para pantallas grandes */}
-        <div className="hidden lg:block w-[910px] h-[901px]">
+        <div className="hidden xl:block w-[910px] h-[901px]">
           <Image
             src="/assets/images/imageLogin.jpg"
             alt="Lighthouse"
-            width={910}  // El componente Image requiere esto, no afecta la visualización
-            height={901} // El componente Image requiere esto también
-            //className="object-cover"
+            width={910}  
+            height={901} 
           />
         </div>
 
-        {/* Formulario */}
-        <div className="w-full px-4 py-8 bg-white max-w-[456px] pt-12">
+        {/* Formulario  */}
+        <div className="mx-auto w-full px-4 py-8 bg-white max-w-[456px] pt-12 ">
           <div className="w-full max-w-[360px] mx-auto">
             {/* Logo */}
-            <div className="flex items-center gap-[10px] justify-left mb-12">
+            <div className="justify-left sm:transform-none sm:static mb-12 absolute top-[80%] left-1/2 transform -translate-x-1/2 ">
               <Image
                 src="/assets/images/ui-unicorn-logo.png"
                 alt="Logo"
@@ -82,7 +74,7 @@ export default function LoginPage() {
 
 
             {/* Título */}
-            <h2 className="text-[20px] font-SfProDisplay font-regular text-[#1a1a1a] mb-6 text-center lg:text-left">
+            <h2 className="text-[20px] font-SfProDisplay font-regular text-[#1a1a1a] mb-6 text-left">
               Nice to see you again
             </h2>
 
@@ -116,7 +108,6 @@ export default function LoginPage() {
                     placeholder="Enter password"
                     className="w-full font-normal text-[15px] text-black border-[#f2f2f2] bg-[#f2f2f2] rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10" // Ajusta el padding para el icono
                   />
-                  {/* Icono de ojo */}
                   <button
                     type="button"
                     onClick={togglePasswordVisibility}
@@ -138,7 +129,7 @@ export default function LoginPage() {
                 </a>
               </div>
 
-              {/* Botón Sign In */}
+              {/* Boton Sign In */}
               <button
                 type="submit"
                 disabled={loading}
@@ -174,20 +165,15 @@ export default function LoginPage() {
                 </p>
               </div>
               <div className="flex items-center justify-between mt-[220px]">
-                {/* Parte izquierda del logo */}
                 <div className="flex items-center gap-[5px]">
                   <img
-                    src="/assets/images/logo-unicorn2.png" // Reemplaza con la URL de la primera parte del logo
+                    src="/assets/images/logo-unicorn2.png" 
                     alt="Logo Part 1"
                     className="h-6 object-contain"
                   />
                   <span className="font-regular text-[12px] text-[#007aff]">@unicorn</span>
                 </div>
-
-                {/* Separación máxima */}
                 <div className="flex-grow"></div>
-
-                {/* Parte derecha del logo */}
                 <div className="font-roboto font-regular text-[12px] text-[#666666]">© perfect login 2025</div>
               </div>
             </form>
