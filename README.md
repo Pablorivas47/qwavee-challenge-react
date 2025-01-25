@@ -5,6 +5,9 @@ La aplicación es una landing page creada utilizando **React, Next.js, y Tailwin
 y está disponible en producción en el siguiente enlace:  
 [🔗 Qwavee Challenge Deployment](https://qwavee-challenge-react-k7xf.vercel.app/)
 
+**user:** r@gmail.com
+**password:** 1234
+
 ---
 
 ## 🛠️ Tecnologías utilizadas  
