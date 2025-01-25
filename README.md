@@ -1,60 +1,66 @@
-Challenge Qwavee FE
+# 🚀 Challenge Qwavee FE
 
-Este es un proyecto desarrollado como parte del challenge de Qwavee para Frontend. La aplicación es una landing page creada utilizando React, Next.js, y Tailwind CSS, y está disponible en producción en el siguiente enlace: Qwavee Challenge Deployment.
+Este es un proyecto desarrollado como parte del **challenge de Qwavee para Frontend**.  
+La aplicación es una landing page creada utilizando **React, Next.js, y Tailwind CSS**,  
+y está disponible en producción en el siguiente enlace:  
+[🔗 Qwavee Challenge Deployment](https://qwavee-challenge-react-k7xf.vercel.app/)
 
-Tecnologías utilizadas: React.js, Next.js, Tailwind CSS
+---
 
-Características del proyecto
+## 🛠️ Tecnologías utilizadas  
+- **React.js**  
+- **Next.js**  
+- **Tailwind CSS**  
 
-El challenge consiste en el desarrollo de una web con diseño responsivo para resoluciones de 1366px y 375px
+---
 
-Requisitos implementados
+## ✨ Características del Proyecto  
 
-Diseño responsivo: Adaptado a diferentes resoluciones de pantalla.
+📱 **Diseño responsivo**: Adaptado a resoluciones de **1366px y 375px**.  
 
-Autenticación: La landing page funciona como Login, redirigiendo al usuario autenticado a la página Logged.
+🔐 **Autenticación**: Login con redirección a la página Logged.  
 
-Animaciones: Se agregaron efectos en el hover de los botones.
+🎨 **Animaciones**: Efectos en botones al hacer hover.  
 
-Reproductor de video: Se utilizó una librería para la reproducción de videos.
+🎬 **Reproductor de video**: Integrado con una librería.  
 
-Ruteo: Implementado mediante el sistema de rutas de Next.js.
+🛣️ **Ruteo**: Implementado con el sistema de rutas de Next.js.  
 
-Buenas prácticas en CSS: Se aplicó la metodología BEM.
+🎯 **Buenas prácticas CSS**: Metodología **BEM**.  
 
-Integración del login: Se utilizó una API gratuita como Mocky.
+🌐 **Consumo de API**: Sección "The Nature" con datos de API externa.  
 
-Interacción en la página Logged: Se añadieron redirecciones internas y modales.
+---
 
-Animaciones adicionales: Se implementaron animaciones en botones y cards.
+## 📂 Instalación y Ejecución  
 
-Carrusel de imágenes: La imagen de login cambia automáticamente cada 5 segundos.
+Sigue estos pasos para ejecutar el proyecto en local:
 
-Consumo de API: La sección "The Nature" obtiene sus datos desde una API mocky.
+1. **Clonar el repositorio:**  
+   ```bash
+   git clone https://github.com/tu-usuario/qwavee-challenge-fe.git
+   cd qwavee-challenge-fe
+   
+2. **Instalar dependencias:**
+   ```bash
+   npm install\
+   # o
+   yarn install
 
+3. **Ejecutar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   # o
+   yarn dev
 
-Instalación y ejecución
+4. **Abrir en el navegador:**
+   http://localhost:3000
+---
 
-Sigue los siguientes pasos para ejecutar el proyecto en local:
-
-Clonar el repositorio:
-
-git clone https://github.com/tu-usuario/qwavee-challenge-fe.git
-cd qwavee-challenge-fe
-
-Instalar las dependencias:
-
-npm install
-# o
-yarn install
-
-Ejecutar el servidor de desarrollo:
-
-npm run dev
-# o
-yarn dev
-
-Abrir el navegador en http://localhost:3000.
+📩 Contacto
+Si tienes alguna duda o sugerencia, contáctame en:
+📧 rivaspablo1172000@gmail.com
+   
 
 
 
