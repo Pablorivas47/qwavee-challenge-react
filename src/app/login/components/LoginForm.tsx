@@ -1,13 +1,12 @@
 import { useActionState, useState } from 'react';
 import Image from 'next/image';
 import { useFormStatus } from 'react-dom';
-import { login } from '@/app/api/auth/login';
+import { login } from '@/app/api/auth/login/login';
 import Switcher from '@/app/components/Switcher';
-import PasswordInput from './Password';
+import PasswordInput from './PasswordInput';
 
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
   const { pending } = useFormStatus();
   const [state, loginAction] = useActionState(login, undefined);
   const [rememberMe, setRememberMe] = useState(false);

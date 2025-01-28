@@ -1,21 +1,11 @@
 'use client';
-
 import React, { useState, useEffect, Suspense } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { usePasswordToggle } from './hooks/UsePasswordToggle';
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { login } from '../api/auth/login';
 import LoginForm from './components/LoginForm';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const { showPassword, togglePasswordVisibility } = usePasswordToggle();
-  const router = useRouter(); 
+
 
   const images = [
     '/assets/images/carrusel/carrusel1.jpg',
@@ -55,12 +45,7 @@ export default function LoginPage() {
         <section className="w-full lg:w-[35%] flex justify-center items-start">
           <LoginForm/>
         </section>
-        
-        
       </div>
-      
     </main>
-    
-    
   );
 }

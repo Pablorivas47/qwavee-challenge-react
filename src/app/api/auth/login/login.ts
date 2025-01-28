@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { createSession, deleteSession } from "../session";
+import { createSession, deleteSession } from "../session/session";
 import { redirect } from "next/navigation";
 import axios from "axios";
 

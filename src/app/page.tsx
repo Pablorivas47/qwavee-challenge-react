@@ -12,7 +12,7 @@ import Image from 'next/image';
 import { useModal } from './hooks/UseModal';
 import { useNatureData } from './hooks/UseNatureData';
 import { scrollToSection } from './hooks/ScrollTol';
-import { logout } from './api/auth/login';
+import { logout } from './api/auth/login/login';
 
 
 
