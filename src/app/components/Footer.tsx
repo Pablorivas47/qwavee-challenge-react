@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-center py-8">
+    <section className="bg-white text-center py-8">
       <div className="mb-20">
       <Image
           src="/assets/images/ui-unicorn-logo.png" 
@@ -49,6 +49,6 @@ export default function Footer() {
       <p className="text-[#072a52] text-sm mx-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       </p>
-    </footer>
+    </section>
   );
 }

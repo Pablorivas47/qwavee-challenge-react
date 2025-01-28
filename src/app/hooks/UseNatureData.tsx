@@ -1,4 +1,4 @@
-import fetchNatureData from '@/app/apis/NatureApi';
+import fetchNatureData from '@/app/api/NatureApi';
 import { useState, useEffect } from 'react';
 
 
